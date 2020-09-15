@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "421753888400",
+    "firebase_url": "https://tech-jobs-provider.firebaseio.com",
+    "project_id": "tech-jobs-provider",
+    "storage_bucket": "tech-jobs-provider.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:421753888400:android:30eebdc92a0a046d130215",
+        "android_client_info": {
+          "package_name": "codes39.techjobsprovider"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "421753888400-t2miqcpk38cvs329mf6l63vrqq44r40t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "codes39.techjobsprovider",
+            "certificate_hash": "cb0394342752e9057bf6beabf12fe7238b2e6817"
+          }
+        },
+        {
+          "client_id": "421753888400-fue84krqpb4770gbqj5ejhchrpm6ueso.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcE1DuEzeDcvnuRyutLDWdIWsbEI4w2tg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "421753888400-fue84krqpb4770gbqj5ejhchrpm6ueso.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
