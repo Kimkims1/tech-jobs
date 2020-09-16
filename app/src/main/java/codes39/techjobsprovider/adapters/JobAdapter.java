@@ -1,6 +1,5 @@
 package codes39.techjobsprovider.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,32 +9,38 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
-import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 import codes39.techjobsprovider.R;
 import codes39.techjobsprovider.models.JobModel;
 
-public
-class JobAdapter extends FirestorePagingAdapter<JobModel, JobAdapter.jobViewHolder> {
+public class JobAdapter extends FirestoreRecyclerAdapter<JobModel, JobAdapter.jobViewHolder> {
 
-    public JobAdapter(@NonNull FirestorePagingOptions<JobModel> options, Context context) {
+    /**
+     * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
+     * FirestoreRecyclerOptions} for configuration options.
+     *
+     * @param options
+     */
+    public JobAdapter(@NonNull FirestoreRecyclerOptions<JobModel> options) {
         super(options);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull jobViewHolder holder, int position, @NonNull JobModel model) {
-        holder.jobTitle.setText(model.getJobTitle());
-        holder.jobDuration.setText(model.getJobDuration());
-        holder.jobDescription.setText(model.getJobDescription());
         holder.jobBudget.setText(model.getJobBudget());
+        holder.jobDescription.setText(model.getJobDescription());
+        holder.jobDuration.setText(model.getJobDuration());
         holder.payMethod.setText(model.getPayMethod());
+        holder.jobTitle.setText(model.getJobTitle());
     }
 
     @NonNull
     @Override
     public jobViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_myjobs, parent, false);
+
         return new jobViewHolder(view);
     }
 
@@ -59,4 +64,5 @@ class JobAdapter extends FirestorePagingAdapter<JobModel, JobAdapter.jobViewHold
             btnApply = itemView.findViewById(R.id.btnApply);
         }
     }
+
 }

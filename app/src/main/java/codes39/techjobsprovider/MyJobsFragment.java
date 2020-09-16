@@ -52,23 +52,6 @@ public class MyJobsFragment extends Fragment {
         jobRecyclerView = view.findViewById(R.id.jobRecyclerView);
         Query query = firestore.collection("Jobs");
 
-        PagedList.Config config = new PagedList.Config.Builder()
-                .setInitialLoadSizeHint(10)
-                .setPageSize(3)
-                .build();
-
-        //Firestore Recycler Options
-        FirestorePagingOptions<JobModel> options = new FirestorePagingOptions.Builder<JobModel>()
-                .setLifecycleOwner(this)
-                .setQuery(query, config, JobModel.class)
-                .build();
-
-        adapter = new JobAdapter(options, getContext());
-
-
-        jobRecyclerView.setHasFixedSize(true);
-        jobRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        jobRecyclerView.setAdapter(adapter);
 
     }
 }
