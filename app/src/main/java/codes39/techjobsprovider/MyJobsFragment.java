@@ -36,6 +36,20 @@ public class MyJobsFragment extends Fragment {
 
         firestore = FirebaseFirestore.getInstance();
 
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_my_jobs, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        jobRecyclerView = view.findViewById(R.id.jobRecyclerView);
         Query query = firestore.collection("Jobs");
 
         PagedList.Config config = new PagedList.Config.Builder()
@@ -55,21 +69,6 @@ public class MyJobsFragment extends Fragment {
         jobRecyclerView.setHasFixedSize(true);
         jobRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         jobRecyclerView.setAdapter(adapter);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_my_jobs, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        jobRecyclerView = view.findViewById(R.id.jobRecyclerView);
 
     }
 }
