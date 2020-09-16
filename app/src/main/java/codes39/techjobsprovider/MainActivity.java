@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
-   private MyJobsFragment myJobsFragment;
-   private AppliedFragment appliedFragment;
-   private OthersFragment othersFragment;
+    private MyJobsFragment myJobsFragment;
+    private AppliedFragment appliedFragment;
+    private OthersFragment othersFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.action_profile:
-                /*Do something*/
+                Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.action_exit:
                 System.exit(0);
