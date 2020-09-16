@@ -1,76 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:layout_marginBottom="1dp"
+    app:cardElevation="3dp"
+    app:contentPadding="5dp">
 
-    <!-- Games Layout Toolbar -->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="#F8F2F2"
-        >
-        <TextView
-            android:id="@+id/matchTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="30sp"
-            android:text="Watford FC - Burnley FC"
-            android:textColor="#30389A"
-            android:textSize="15sp"
-            android:textStyle="normal" />
+        android:layout_height="wrap_content">
+
+        <com.blogspot.atifsoftwares.circularimageview.CircularImageView
+            android:id="@+id/shopIv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/profile"
+            app:c_border="true"
+            app:c_border_color="@color/colorGray02"
+            app:c_border_width="1dp" />
+
+        <!-- Online/Offline status-->
+        <ImageView
+            android:id="@+id/onlineIv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/shape_circle00" />
 
         <TextView
-            android:id="@+id/matchDate"
+            android:id="@+id/budgetTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/matchTv"
-            android:layout_centerHorizontal="true"
-            android:text="10:00 PM"
-            android:textColor="#30389A"
-            android:textSize="12sp" />
+            android:layout_toStartOf="@+id/nextIv"
+            android:background="@drawable/shape_rect06"
+            android:text="Budget"
+            android:textColor="@color/colorRed"
+            android:textSize="10sp" />
 
-    </RelativeLayout>
-
-    <!-- Toolbar -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp">
-
-        <TextView
-            android:id="@+id/matchLeague"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20sp"
-            android:layout_marginTop="20sp"
-            android:text="Premier League"
-            android:textColor="#30389A"
-            android:textSize="12sp" />
+            android:layout_toStartOf="@id/nextIv"
+            android:layout_toEndOf="@id/shopIv"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/predictionTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20sp"
-            android:text="Pick 1"
-            android:textColor="#30389A"
-            android:textSize="15sp"
-            android:textStyle="normal" />
+            <TextView
+                android:id="@+id/jobTypeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxLines="1"
+                android:text="Job Type"
+                android:textColor="@color/colorblack"
+                android:textStyle="bold" />
 
-        <RatingBar
-            style="@style/Widget.AppCompat.RatingBar.Small"
+            <TextView
+                android:id="@+id/phoneTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone"
+                android:textColor="@color/colorblack" />
+
+            <TextView
+                android:id="@+id/addressTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textColor="@color/colorblack" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:numStars="5"
+                android:rating="3.5" />
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/nextIv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="20sp"
-            android:layout_marginEnd="10sp"
-            android:numStars="5"
-            android:background="#30389A"
-            android:rating="4" />
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_gray" />
+
+
     </RelativeLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
