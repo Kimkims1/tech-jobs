@@ -13,7 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -23,19 +25,13 @@ import codes39.techjobsprovider.models.JobModel;
 public class MyJobsFragment extends Fragment {
 
     private RecyclerView jobRecyclerView;
-    private FirebaseFirestore firestore;
     private JobAdapter adapter;
+
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    private CollectionReference reference = firestore.collection("Jobs");
 
     public MyJobsFragment() {
         // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        firestore = FirebaseFirestore.getInstance();
-
     }
 
     @Override
@@ -50,8 +46,35 @@ public class MyJobsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         jobRecyclerView = view.findViewById(R.id.jobRecyclerView);
-        Query query = firestore.collection("Jobs");
+        firestore = FirebaseFirestore.getInstance();
 
+        loadData();
+    }
 
+    private void loadData() {
+
+        Query query = reference.orderBy("jobBudget", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions<JobModel> options = new FirestoreRecyclerOptions.Builder<JobModel>()
+                .setQuery(query, JobModel.class)
+                .build();
+
+        adapter = new JobAdapter(options);
+
+        jobRecyclerView.setHasFixedSize(true);
+        jobRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        jobRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 }
